@@ -1,0 +1,34 @@
+{
+  "name": "hearthstone-api",
+  "version": "1.0.0",
+  "description": "Hearthstone API",
+  "author": "James Young <jmeyoung@gmail.com> (http://jamsyoung.com)",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "generate-docs": "",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": "0.10.33"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-jscs": "0.8.1",
+    "grunt-jsonlint": "1.0.4",
+    "jscs": "1.7.3",
+    "jsdoc": "3.3.0-alpha10",
+    "jshint": "2.5.10",
+    "jshint-stylish": "1.0.0",
+    "load-grunt-tasks": "1.0.0",
+    "time-grunt": "1.0.0",
+    "xml2js": "0.4.4"
+  },
+  "license": "MIT"
+}

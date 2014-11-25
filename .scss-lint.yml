@@ -1,0 +1,85 @@
+linters:
+    BorderZero:
+        severity: error
+
+    CapitalizationInSelector:
+        severity: error
+
+    ColorKeyword:
+        severity: error
+
+    Comment:
+        severity: error
+
+    DeclarationOrder:
+        severity: error
+
+    DuplicateProperty:
+        severity: warning
+
+    ElsePlacement:
+        severity: error
+
+    EmptyLineBetweenBlocks:
+        severity: error
+
+    EmptyRule:
+        severity: error
+
+    FinalNewline:
+        severity: error
+
+    HexLength:
+        severity: error
+
+    Indentation:
+        severity: error
+        width: 4
+
+    LeadingZero:
+        severity: error
+
+    NameFormat:
+        severity: warning
+        convention: BEM
+
+    PlaceholderInExtend:
+        enabled: false
+
+    PropertySortOrder:
+        severity: error
+
+    SelectorDepth:
+        severity: warning
+        max_depth: 3
+
+    Shorthand:
+        severity: error
+
+    SingleLinePerSelector:
+        severity: error
+
+    SpaceAfterComma:
+        severity: error
+
+    SpaceAfterPropertyColon:
+        severity: error
+
+    SpaceAfterPropertyName:
+        severity: error
+
+    SpaceBeforeBrace:
+        severity: error
+
+    SpaceBetweenParens:
+        severity: error
+
+    StringQuotes:
+        severity: error
+        style: double_quotes
+
+    UrlQuotes:
+        severity: error
+
+    ZeroUnit:
+        severity: warning
