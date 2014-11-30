@@ -12,272 +12,280 @@ function doit(callback) {
 
         parser.parseString(xml, function (parseError, result) {
             var json = {},
+                temporaryObject,
                 processError = false;
 
             json.cards = [];
 
 
-            function processEntity(entity) {
 
 
-                function processProperty(item) {
-                    /*
-                     * STEP 4: Process the complex properties.  This is going to
-                     * be drastically refactored so avoid the mirrored switch
-                     * statements that current exist in processEntity and in
-                     * processProperty.
-                     *
-                     * Each known case ends with data being added onto
-                     * temporaryObject.
-                     */
-                    switch (property) {
-                        case 'Tag':
+            function processTag(tags) {
+                /*
+                 * Type: Array of Objects
+                 *
+                 * Example Raw data:
+                 *
+                 *     Tag [
+                 *         {"_":"Thaddius","$":{"name":"CardName","enumID":"185","type":"String"}},
+                 *         {"$":{"name":"CardSet","enumID":"183","type":"CardSet","value":"12"}},
+                 *         {"$":{"name":"Rarity","enumID":"203","type":"Rarity","value":"5"}},
+                 *         {"$":{"name":"CardType","enumID":"202","type":"CardType","value":"4"}},
+                 *         {"$":{"name":"Cost","enumID":"48","type":"Number","value":"10"}},
+                 *         {"$":{"name":"Atk","enumID":"47","type":"Number","value":"11"}},
+                 *         {"$":{"name":"Health","enumID":"45","type":"Number","value":"11"}},
+                 *         {"$":{"name":"Elite","enumID":"114","type":"Bool","value":"1"}}
+                 *     ]
+                 */
+
+                /*
+                 * knownTags is only needed to notify that new tags exist.
+                 * There is no functional need to do this outside of
+                 * notification purproses.
+                 */
+                var knownTags = [
+                        'AdjacentBuff', 'AffectedBySpellPower', 'AIMustPlay', 'ArtistName',
+                        'Atk', 'AttackVisualType', 'Aura', 'Battlecry', 'CardName', 'CardSet',
+                        'CardTextInHand', 'CardTextInPlay', 'CardType', 'Charge', 'Class',
+                        'Collectible', 'Combo', 'Cost', 'Deathrattle', 'DevState', 'Divine Shield',
+                        'Durability', 'Elite', 'EnchantmentBirthVisual', 'EnchantmentIdleVisual',
+                        'Enrage', 'Faction', 'FlavorText', 'Freeze', 'GrantCharge', 'HealTarget',
+                        'Health', 'HowToGetThisCard', 'HowToGetThisGoldCard', 'ImmuneToSpellpower',
+                        'InvisibleDeathrattle', 'Morph', 'OneTurnEffect', 'Poisonous', 'Race',
+                        'Rarity', 'Recall', 'Secret', 'Silence', 'Spellpower', 'Stealth', 'Summoned',
+                        'TargetingArrowText', 'Taunt', 'TriggerVisual', 'Windfury'
+                    ];
+
+                temporaryObject.Tag = {};
+
+                tags.forEach(function (tag) {
+                    if (knownTags.indexOf(tag.$.name) === -1) {
+                        console.log('NEW TAG FOUND! - %s %s', tag.$.name, JSON.stringify(tag));
+                        processError = true;
+                    }
+
+                    switch (tag.$.type || tag._.type) {
+                        case 'AttackVisualType':
                             /*
-                             * Type: array of objects
+                             * {"$":{"name":"AttackVisualType","enumID":"251","type":"AttackVisualType","value":"9"}}
                              *
-                             * Raw data:
-                             *
-                             *     Tag [
-                             *         {"_":"Thaddius","$":{"name":"CardName","enumID":"185","type":"String"}},
-                             *         {"$":{"name":"CardSet","enumID":"183","type":"CardSet","value":"12"}},
-                             *         {"$":{"name":"Rarity","enumID":"203","type":"Rarity","value":"5"}},
-                             *         {"$":{"name":"CardType","enumID":"202","type":"CardType","value":"4"}},
-                             *         {"$":{"name":"Cost","enumID":"48","type":"Number","value":"10"}},
-                             *         {"$":{"name":"Atk","enumID":"47","type":"Number","value":"11"}},
-                             *         {"$":{"name":"Health","enumID":"45","type":"Number","value":"11"}},
-                             *         {"$":{"name":"Elite","enumID":"114","type":"Bool","value":"1"}}
-                             *     ]
-                             *
-                             *
-                             * Example on temporaryObject:
-                             *
-                             *     {
-                             *         "Tag": {
-                             *             "CardName": "Thaddius",
-                             *             "CardSet": "12",         <-- This is a String since the `type` is `CardSet`
-                             *             "Rarity": "5",
-                             *             "CardType": "4",
-                             *             "Cost": 10,              <-- This is a Number since the `type` is `Number`
-                             *             "Atk": 11,
-                             *             "Health": 11,
-                             *             "Elite": true            <-- This is a Boolean since the `type` is `Bool`
-                             *         }
-                             *     }
+                             * Values: 1-9
+                             * The value will be parsed as a Number
                              */
-                            temporaryObject[property][item.$.name] = item._ || item.$.value;
+
+                        case 'CardSet':
+                            /*
+                             * {"$":{"name":"CardSet","enumID":"183","type":"CardSet","value":"16"}}
+                             *
+                             * Values: 2-5, 7-8, 11-12, 16
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'CardType':
+                            /*
+                             * {"$":{"name":"CardType","enumID":"202","type":"CardType","value":"10"}}
+                             *
+                             * Values: 3-7, 10
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'Class':
+                            /*
+                             * {"$":{"name":"Class","enumID":"199","type":"Class","value":"11"}}
+                             *
+                             * Values: 0, 2-11
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'DevState':
+                            /*
+                             * {"$":{"name":"DevState","enumID":"268","type":"DevState","value":"2"}}
+                             *
+                             * Values: 2
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'EnchantmentVisualType':
+                            /*
+                             * {"$":{"name":"EnchantmentBirthVisual","enumID":"330","type":"EnchantmentVisualType","value":"3"}}
+                             *
+                             * Values: 0-3
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'Faction':
+                            /*
+                             * {"$":{"name":"Faction","enumID":"201","type":"Faction","value":"3"}}
+                             *
+                             * Values: 1-3
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'Race':
+                            /*
+                             * {"$":{"name":"Race","enumID":"200","type":"Race","value":"24"}}
+                             *
+                             * Values: 14-15, 20-21, 23-24
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'Rarity':
+                            /*
+                             * {"$":{"name":"Rarity","enumID":"203","type":"Rarity","value":"5"}}
+                             *
+                             * Values: 0-5
+                             * The value will be parsed as a Number
+                             */
+
+                        case 'Number':
+                            /*
+                             * {"$":{"name":"Health","enumID":"45","type":"Number","value":"99"}}
+                             *
+                             * Values: Number
+                             * The value will be parsed as a Number
+                             */
+                            temporaryObject.Tag[tag.$.name] = +tag.$.value;
                             break;
 
-                        case 'Power':
+                        case 'Bool':
                             /*
-                             * Type: array of objects
+                             * {"$":{"name":"AIMustPlay","enumID":"367","type":"Bool","value":"1"}}
                              *
-                             * Raw data:
-                             *
-                             *     Power [
-                             *         {
-                             *             "$":{"definition":"ffa01d9c-6b4b-45c1-8563-5f1115e4c1a8"},
-                             *             "PlayRequirement":[
-                             *                 {"$":{"reqID":"11","param":""}},
-                             *                 {"$":{"reqID":"3","param":""}}
-                             *             ]
-                             *         },
-                             *         {
-                             *             "$":{"definition":"f4d448ad-f73c-4e00-b1b9-38fe7e375145"}
-                             *         }
-                             *     ]
-                             *
-                             *
-                             * Example on temporaryObject:
-                             *
-                             *     {
-                             *         "Power": [
-                             *             {
-                             *                 "definition": "ffa01d9c-6b4b-45c1-8563-5f1115e4c1a8",
-                             *                 "PlayRequirement": [
-                             *                     {
-                             *                         "reqID": 11  <-- This is a Number since the name of the field has "ID" in it
-                             *                     },
-                             *                     {
-                             *                         "reqId": 3
-                             *                     }
-                             *                 ]
-                             *             },
-                             *             {
-                             *                 "definition": "f4d448ad-f73c-4e00-b1b9-38fe7e375145"
-                             *             }
-                             *         ]
-                             *     }
+                             * Values: 0-1
+                             * The value will be parsed as a Bool
+                             * 0 is FALSE
+                             * 1 is TRUE
                              */
-                            temporaryObject[property].definition = item.$.definition;
+                            temporaryObject.Tag[tag.$.name] = tag.$.value ? true : false;
                             break;
 
-                        case 'ReferencedTag':
+                        case 'String':
                             /*
-                             * Type: array of objects
+                             * {"_":"blaarghghLLGHRHARAAHAHHH!!","$":{"name":"FlavorText","enumID":"351","type":"String"}}
                              *
-                             * Raw data:
-                             *
-                             *     ReferencedTag [
-                             *         {"$":{"name":"Taunt","enumID":"190","type":"Bool","value":"1"}},
-                             *         {"$":{"name":"Charge","enumID":"197","type":"Bool","value":"1"}}
-                             *     ]
-                             *
-                             * This one has an unfortunate name :/
-                             *
-                             *     ReferencedTag [
-                             *         {"$":{"name":"Cant Be Damaged","enumID":"240","type":"Bool","value":"1"}}
-                             *     ]
-                             *
-                             *
-                             * Example on temporaryObject:
-                             *
-                             *     {
-                             *         "ReferencedTag": {
-                             *             "Taunt": true,           <-- This is a Boolean since the `type` is `Bool`
-                             *             "Charge": true
-                             *         }
-                             *     }
-                             *
-                             *
-                             * Alternate proposal: TODO: I don't remember if properties can start with a number, google this
-                             *
-                             *     {
-                             *         "ReferencedTag": {
-                             *             "240": {"name": "Cant Be Damaged", "value": true}
-                             *         }
-                             *     }
-                             *
-                             *     {
-                             *         "ReferencedTag": {
-                             *             "190": {"name": "Taunt", "value": true},
-                             *             "197": {"name": "Charge", "value": true}
-                             *         }
-                             *     }
+                             * Values: String
+                             * The value will be parsed as a String
                              */
-                            // temporaryObject[property].
-                            break;
-
-                        case 'TriggeredPowerHistoryInfo':
-                            /*
-                             * Type: array of objects
-                             *
-                             * Raw data:
-                             *
-                             *     TriggeredPowerHistoryInfo [
-                             *         {"$":{"effectIndex":"0","showInHistory":"False"}},
-                             *         {"$":{"effectIndex":"1","showInHistory":"False"}}
-                             *     ]
-                             *
-                             *
-                             * Example on temporaryObject:
-                             *
-                             *     {
-                             *         "TriggeredPowerHistoryInfo": [
-                             *             {"effectIndex": 0, "showInHistory": false},
-                             *             {"effectIndex": 1, "showInHistory": false}
-                             *         ]
-                             *     }
-                             */
-                            // temporaryObject[propery].
-                            break;
-
-                        case 'EntourageCard':
-                            /*
-                             * Type: array of objects
-                             *
-                             * Raw data:
-                             *
-                             *     EntourageCard [{"$":{"cardID":"NEW1_032"}},{"$":{"cardID":"NEW1_033"}},{"$":{"cardID":"NEW1_034"}}]
-                             *
-                             *
-                             * Example on temporaryObject:
-                             *
-                             *     {
-                             *         "EntourageCard": [
-                             *             {"cardID": "NEW1_032"},
-                             *             {"cardID": "NEW1_033"},
-                             *             {"cardID": "NEW1_034"}
-                             *     }
-                             */
-                            // temporaryObject[property].
-                            break;
-
-                        case 'MasterPower':
-                            /*
-                             * Type: string - Yeah, I know, looks like an array right?  typeof item returns 'string' though.
-                             *
-                             * Raw Data:
-                             *
-                             *     MasterPower ["6c5c7b20-6aa1-44d5-9ab2-fcf6755877dc"]
-                             *
-                             * Example on temporaryObject:
-                             *
-                             *     {
-                             *         "MasterPower": "6c5c7b20-6aa1-44d5-9ab2-fcf6755877dc"
-                             *     }
-                             */
-                            temporaryObject[property] = item;
+                            temporaryObject.Tag[tag.$.name] = tag._;
                             break;
 
                         default:
-                            console.log('NEW PROPERTY FOUND! - %s', property, JSON.stringify(entity[property]));
+                            console.log('NEW TAG TYPE FOUND! - %s %s', tag.$.type || tag._.type, JSON.stringify(tag));
                             processError = true;
                     }
-                }
+                });
+            }
 
+
+
+
+            function processPower(powers) {
+                /*
+                 * Type: Array of Object
+                 *
+                 * Example Raw data:
+                 *
+                 *     Power [
+                 *         {
+                 *             "$": {"definition": "abd20d6f-3dd8-43b8-91c9-122229719018"},
+                 *             "PlayRequirement": [
+                 *                 {"$":{"reqID":"11","param":""}},
+                 *                 {"$":{"reqID":"1","param":""}}
+                 *             ]
+                 *         }
+                 *     ]
+                 */
 
                 /*
-                 * Apparently a function can not be between a var declaration
-                 * and a for..in loop without causing a JSHint error saying that
-                 * the variable in the for..in is not declared and will be
-                 * global.  See JSHint error W088 for more details.  To get
-                 * around this, the var declaration block is moved below the
-                 * function declaration.  This goes against the concept of
-                 * always having the var declaration as the first block in a
-                 * function, but at least it does not throw a JSHint error
-                 * anymore.
-                 *
-                 * Yes, I tried several other variations, but they all resulted
-                 * in other JSHint errors.
+                 * knownProperties is only needed to notify that new properties
+                 * exist.  There is no functional need to do this outside of
+                 * notification purproses.  This is not comprehensive either.
                  */
-                var temporaryObject = {},
-                    property;
+                var knownProperties = ['$', 'PlayRequirement'];
+
+                temporaryObject.Power = [];
+
+                powers.forEach(function (power) {
+                    var temporaryPowerObject = {},
+                        key;
+
+                    for (key in power) {
+                        if (knownProperties.indexOf(key) === -1) {
+                            console.log('NEW POWER PROPERTY FOUND! - %s %s', key, JSON.stringify(power));
+                            processError = true;
+                        }
+                    }
+
+                    temporaryPowerObject.definition = power.$.definition;
+
+                    if (Array.isArray(power.PlayRequirement)) {
+                        temporaryPowerObject.PlayRequirement = [];
+
+                        power.PlayRequirement.forEach(function (playRequirement) {
+                            temporaryPowerObject.PlayRequirement.push({
+                                reqID: +playRequirement.$.reqID,
+                                param: parseInt(playRequirement.$.param, 10)
+                            });
+                        });
+                    }
+
+                    temporaryObject.Power.push(temporaryPowerObject);
+                });
+            }
 
 
-                /* STEP 2: Loop over each property of the card (entity) */
+
+
+            function processDollar(dollar) {
+                var knownProperties = ['version', 'CardID'],
+                    key;
+
+                for (key in dollar) {
+                    if (knownProperties.indexOf(key) === -1) {
+                        console.log('NEW DOLLAR ($) PROPERTY FOUND! = %s %s', key, JSON.stringify(dollar));
+                        processError = true;
+                    }
+
+                    if (key === 'version') {
+                        temporaryObject[key] = +dollar[key];
+                    } else {
+                        temporaryObject[key] = dollar[key];
+                    }
+                }
+            }
+
+
+
+
+            function processEntity(entity) {
+                var property;
+
+                /* make sure we are working with a clean object */
+                temporaryObject = {};
+
                 for (property in entity) {
-                    temporaryObject[property] = {};
-
                     switch (property) {
-                        /*
-                         * STEP 3: If a known property is complex, process
-                         * it separatley.
-                         */
                         case 'Tag':
+                            processTag(entity[property]);
+                            break;
+
                         case 'Power':
+                            processPower(entity[property]);
+                            break;
+
                         case 'ReferencedTag':
                         case 'TriggeredPowerHistoryInfo':
                         case 'EntourageCard':
-                        case 'MasterPower':
-                            entity[property].forEach(processProperty);
                             break;
 
-                        /*
-                         * STEP 3: If a known property is not complext, just
-                         * add it to the temporaryObject as is.
-                         */
-                        case '$':
-                            /*
-                             * TODO: pull the items off $ and add them directly
-                             * to temporaryObject
-                             */
+                        case 'MasterPower':
                             temporaryObject[property] = entity[property];
                             break;
 
-                        /*
-                         * STEP 3: If the property is unknown, alert that a new
-                         * property has been found that needs to be supported.
-                         */
+                        case '$':
+                            processDollar(entity[property]);
+                            break;
+
                         default:
                             console.log('NEW PROPERTY FOUND! - %s', property, JSON.stringify(entity[property]));
                             processError = true;
@@ -286,9 +294,6 @@ function doit(callback) {
 
 
                 /*
-                 * STEP 4/5 (depending on what path was executed): push the
-                 * temporaryObject onto the json.cards array.
-                 *
                  * See http://stackoverflow.com/questions/728360/most-elegant-way-to-clone-a-javascript-object
                  * for more details on what this is doing.  I choose to go with
                  * the following solution since I know that I do not have any
@@ -298,14 +303,9 @@ function doit(callback) {
             }
 
 
-            /* STEP 1: Loop over each card, aka entity */
             result.CardDefs.Entity.forEach(processEntity);
 
 
-            /* STEP 5/6 (depending on what path was exectued):  Call the
-             * callback, which will either act on the error, or the generated
-             * json object.
-             */
             callback(readError || parseError || processError, json);
         });
     });
@@ -321,3 +321,107 @@ doit(function (error, data) {
         console.log('Error: %j', error);
     }
 });
+
+
+
+
+
+
+
+
+
+
+// function processProperty(item) {
+//     switch (property) {
+//         case 'ReferencedTag':
+//             /*
+//              * Type: array of objects
+//              *
+//              * Raw data:
+//              *
+//              *     ReferencedTag [
+//              *         {"$":{"name":"Taunt","enumID":"190","type":"Bool","value":"1"}},
+//              *         {"$":{"name":"Charge","enumID":"197","type":"Bool","value":"1"}}
+//              *     ]
+//              *
+//              * This one has an unfortunate name :/
+//              *
+//              *     ReferencedTag [
+//              *         {"$":{"name":"Cant Be Damaged","enumID":"240","type":"Bool","value":"1"}}
+//              *     ]
+//              *
+//              *
+//              * Example on temporaryObject:
+//              *
+//              *     {
+//              *         "ReferencedTag": {
+//              *             "Taunt": true,           <-- This is a Boolean since the `type` is `Bool`
+//              *             "Charge": true
+//              *         }
+//              *     }
+//              *
+//              *
+//              * Alternate proposal: TODO: I don't remember if properties can start with a number, google this
+//              *
+//              *     {
+//              *         "ReferencedTag": {
+//              *             "240": {"name": "Cant Be Damaged", "value": true}
+//              *         }
+//              *     }
+//              *
+//              *     {
+//              *         "ReferencedTag": {
+//              *             "190": {"name": "Taunt", "value": true},
+//              *             "197": {"name": "Charge", "value": true}
+//              *         }
+//              *     }
+//              */
+//             // temporaryObject[property].
+//             break;
+//
+//         case 'TriggeredPowerHistoryInfo':
+//             /*
+//              * Type: array of objects
+//              *
+//              * Raw data:
+//              *
+//              *     TriggeredPowerHistoryInfo [
+//              *         {"$":{"effectIndex":"0","showInHistory":"False"}},
+//              *         {"$":{"effectIndex":"1","showInHistory":"False"}}
+//              *     ]
+//              *
+//              *
+//              * Example on temporaryObject:
+//              *
+//              *     {
+//              *         "TriggeredPowerHistoryInfo": [
+//              *             {"effectIndex": 0, "showInHistory": false},
+//              *             {"effectIndex": 1, "showInHistory": false}
+//              *         ]
+//              *     }
+//              */
+//             // temporaryObject[propery].
+//             break;
+//
+//         case 'EntourageCard':
+//             /*
+//              * Type: array of objects
+//              *
+//              * Raw data:
+//              *
+//              *     EntourageCard [{"$":{"cardID":"NEW1_032"}},{"$":{"cardID":"NEW1_033"}},{"$":{"cardID":"NEW1_034"}}]
+//              *
+//              *
+//              * Example on temporaryObject:
+//              *
+//              *     {
+//              *         "EntourageCard": [
+//              *             {"cardID": "NEW1_032"},
+//              *             {"cardID": "NEW1_033"},
+//              *             {"cardID": "NEW1_034"}
+//              *     }
+//              */
+//             // temporaryObject[property].
+//             break;
+//     }
+// }
