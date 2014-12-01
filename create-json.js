@@ -20,6 +20,95 @@ function doit(callback) {
 
 
 
+            function processDollar(dollar) {
+                var knownProperties = ['version', 'CardID'],
+                key;
+
+                for (key in dollar) {
+                    if (knownProperties.indexOf(key) === -1) {
+                        console.log('NEW DOLLAR ($) PROPERTY FOUND! = %s %s', key, JSON.stringify(dollar));
+                        processError = true;
+                    }
+
+                    if (key === 'version') {
+                        temporaryObject[key] = +dollar[key];
+                    } else {
+                        temporaryObject[key] = dollar[key];
+                    }
+                }
+            }
+
+
+
+
+            function processEntourageCard(entourageCards) {
+                temporaryObject.EntourageCard = [];
+
+                entourageCards.forEach(function (entourageCard) {
+                    temporaryObject.EntourageCard.push({cardID: entourageCard.$.cardID});
+                });
+            }
+
+
+
+
+            function processPower(powers) {
+                /*
+                * Type: Array of Object
+                *
+                * Example Raw data:
+                *
+                *     Power [
+                *         {
+                *             "$": {"definition": "abd20d6f-3dd8-43b8-91c9-122229719018"},
+                *             "PlayRequirement": [
+                *                 {"$":{"reqID":"11","param":""}},
+                *                 {"$":{"reqID":"1","param":""}}
+                *             ]
+                *         }
+                *     ]
+                */
+
+                /*
+                * knownProperties is only needed to notify that new properties
+                * exist.  There is no functional need to do this outside of
+                * notification purproses.  This is not comprehensive either.
+                */
+                var knownProperties = ['$', 'PlayRequirement'];
+
+                temporaryObject.Power = [];
+
+                powers.forEach(function (power) {
+                    var temporaryPowerObject = {},
+                    key;
+
+                    for (key in power) {
+                        if (knownProperties.indexOf(key) === -1) {
+                            console.log('NEW POWER PROPERTY FOUND! - %s %s', key, JSON.stringify(power));
+                            processError = true;
+                        }
+                    }
+
+                    temporaryPowerObject.definition = power.$.definition;
+
+                    if (Array.isArray(power.PlayRequirement)) {
+                        temporaryPowerObject.PlayRequirement = [];
+
+                        power.PlayRequirement.forEach(function (playRequirement) {
+                            temporaryPowerObject.PlayRequirement.push({
+                                reqID: +playRequirement.$.reqID,
+                                param: parseInt(playRequirement.$.param, 10)
+                            });
+                        });
+                    }
+
+                    temporaryObject.Power.push(temporaryPowerObject);
+                });
+            }
+
+
+
+
             function processTag(tags) {
                 /*
                  * Type: Array of Objects
@@ -179,84 +268,6 @@ function doit(callback) {
 
 
 
-            function processPower(powers) {
-                /*
-                 * Type: Array of Object
-                 *
-                 * Example Raw data:
-                 *
-                 *     Power [
-                 *         {
-                 *             "$": {"definition": "abd20d6f-3dd8-43b8-91c9-122229719018"},
-                 *             "PlayRequirement": [
-                 *                 {"$":{"reqID":"11","param":""}},
-                 *                 {"$":{"reqID":"1","param":""}}
-                 *             ]
-                 *         }
-                 *     ]
-                 */
-
-                /*
-                 * knownProperties is only needed to notify that new properties
-                 * exist.  There is no functional need to do this outside of
-                 * notification purproses.  This is not comprehensive either.
-                 */
-                var knownProperties = ['$', 'PlayRequirement'];
-
-                temporaryObject.Power = [];
-
-                powers.forEach(function (power) {
-                    var temporaryPowerObject = {},
-                        key;
-
-                    for (key in power) {
-                        if (knownProperties.indexOf(key) === -1) {
-                            console.log('NEW POWER PROPERTY FOUND! - %s %s', key, JSON.stringify(power));
-                            processError = true;
-                        }
-                    }
-
-                    temporaryPowerObject.definition = power.$.definition;
-
-                    if (Array.isArray(power.PlayRequirement)) {
-                        temporaryPowerObject.PlayRequirement = [];
-
-                        power.PlayRequirement.forEach(function (playRequirement) {
-                            temporaryPowerObject.PlayRequirement.push({
-                                reqID: +playRequirement.$.reqID,
-                                param: parseInt(playRequirement.$.param, 10)
-                            });
-                        });
-                    }
-
-                    temporaryObject.Power.push(temporaryPowerObject);
-                });
-            }
-
-
-
-
-            function processDollar(dollar) {
-                var knownProperties = ['version', 'CardID'],
-                    key;
-
-                for (key in dollar) {
-                    if (knownProperties.indexOf(key) === -1) {
-                        console.log('NEW DOLLAR ($) PROPERTY FOUND! = %s %s', key, JSON.stringify(dollar));
-                        processError = true;
-                    }
-
-                    if (key === 'version') {
-                        temporaryObject[key] = +dollar[key];
-                    } else {
-                        temporaryObject[key] = dollar[key];
-                    }
-                }
-            }
-
-
-
-
             function processEntity(entity) {
                 var property;
 
@@ -265,25 +276,28 @@ function doit(callback) {
 
                 for (property in entity) {
                     switch (property) {
-                        case 'Tag':
-                            processTag(entity[property]);
+                        case '$':
+                            processDollar(entity[property]);
                             break;
 
-                        case 'Power':
-                            processPower(entity[property]);
-                            break;
-
-                        case 'ReferencedTag':
-                        case 'TriggeredPowerHistoryInfo':
                         case 'EntourageCard':
+                            processEntourageCard(entity[property]);
                             break;
 
                         case 'MasterPower':
                             temporaryObject[property] = entity[property];
                             break;
 
-                        case '$':
-                            processDollar(entity[property]);
+                        case 'Power':
+                            processPower(entity[property]);
+                            break;
+
+                        case 'Tag':
+                            processTag(entity[property]);
+                            break;
+
+                        case 'ReferencedTag':
+                        case 'TriggeredPowerHistoryInfo':
                             break;
 
                         default:
@@ -325,14 +339,6 @@ doit(function (error, data) {
 
 
 
-
-
-
-
-
-
-// function processProperty(item) {
-//     switch (property) {
 //         case 'ReferencedTag':
 //             /*
 //              * Type: array of objects
@@ -376,8 +382,6 @@ doit(function (error, data) {
 //              *         }
 //              *     }
 //              */
-//             // temporaryObject[property].
-//             break;
 //
 //         case 'TriggeredPowerHistoryInfo':
 //             /*
@@ -400,28 +404,3 @@ doit(function (error, data) {
 //              *         ]
 //              *     }
 //              */
-//             // temporaryObject[propery].
-//             break;
-//
-//         case 'EntourageCard':
-//             /*
-//              * Type: array of objects
-//              *
-//              * Raw data:
-//              *
-//              *     EntourageCard [{"$":{"cardID":"NEW1_032"}},{"$":{"cardID":"NEW1_033"}},{"$":{"cardID":"NEW1_034"}}]
-//              *
-//              *
-//              * Example on temporaryObject:
-//              *
-//              *     {
-//              *         "EntourageCard": [
-//              *             {"cardID": "NEW1_032"},
-//              *             {"cardID": "NEW1_033"},
-//              *             {"cardID": "NEW1_034"}
-//              *     }
-//              */
-//             // temporaryObject[property].
-//             break;
-//     }
-// }
