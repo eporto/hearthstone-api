@@ -1,44 +1,44 @@
 <CardDefs>
     <Entity version="2" CardID="CS1_042">
-        <Tag name="CardName" enumID="185" type="String">Goldshire Footman</Tag>
-        <Tag name="CardSet" enumID="183" type="CardSet" value="2" />
-        <Tag name="CardType" enumID="202" type="CardType" value="4" />
-        <Tag name="Faction" enumID="201" type="Faction" value="2" />
-        <Tag name="Rarity" enumID="203" type="Rarity" value="1" />
-        <Tag name="Cost" enumID="48" type="Number" value="1" />
-        <Tag name="Atk" enumID="47" type="Number" value="1" />
-        <Tag name="Health" enumID="45" type="Number" value="2" />
-        <Tag name="AttackVisualType" enumID="251" type="AttackVisualType" value="1" />
-        <Tag name="CardTextInHand" enumID="184" type="String">&lt;b&gt;Taunt&lt;/b&gt;</Tag>
-        <Tag name="DevState" enumID="268" type="DevState" value="2" />
-        <Tag name="Collectible" enumID="321" type="Bool" value="1" />
-        <Tag name="EnchantmentBirthVisual" enumID="330" type="EnchantmentVisualType" value="0" />
-        <Tag name="EnchantmentIdleVisual" enumID="331" type="EnchantmentVisualType" value="0" />
-        <Tag name="ArtistName" enumID="342" type="String">Donato Giancola</Tag>
-        <Tag name="HowToGetThisGoldCard" enumID="365" type="String">Unlocked at Paladin Level 57.</Tag>
-        <Tag name="FlavorText" enumID="351" type="String">If 1/2 minions are all that is defending Goldshire, you would think it would have been overrun years ago.</Tag>
-        <Tag name="Taunt" enumID="190" type="Bool" value="1" />
+        <Tag enumID="185" type="String">Goldshire Footman</Tag>
+        <Tag enumID="183" type="" value="2" />
+        <Tag enumID="202" type="" value="4" />
+        <Tag enumID="201" type="" value="2" />
+        <Tag enumID="203" type="" value="1" />
+        <Tag enumID="48" type="" value="1" />
+        <Tag enumID="47" type="" value="1" />
+        <Tag enumID="45" type="" value="2" />
+        <Tag enumID="251" type="" value="1" />
+        <Tag enumID="184" type="String">&lt;b&gt;Taunt&lt;/b&gt;</Tag>
+        <Tag enumID="268" type="" value="2" />
+        <Tag enumID="321" type="" value="1" />
+        <Tag enumID="330" type="" value="0" />
+        <Tag enumID="331" type="" value="0" />
+        <Tag enumID="342" type="String">Donato Giancola</Tag>
+        <Tag enumID="365" type="String">Unlocked at Paladin Level 57.</Tag>
+        <Tag enumID="351" type="String">If 1/2 minions are all that is defending Goldshire, you would think it would have been overrun years ago.</Tag>
+        <Tag enumID="190" type="" value="1" />
         <Power definition="54e57583-ce5c-46e3-899a-39bd2181468d" />
     </Entity>
     <Entity version="2" CardID="CS1_113">
         <MasterPower>3779b451-83fa-4a47-85cf-dc4fe87746a9</MasterPower>
-        <Tag name="CardName" enumID="185" type="String">Mind Control</Tag>
-        <Tag name="CardSet" enumID="183" type="CardSet" value="2" />
-        <Tag name="CardType" enumID="202" type="CardType" value="5" />
-        <Tag name="Faction" enumID="201" type="Faction" value="3" />
-        <Tag name="Class" enumID="199" type="Class" value="6" />
-        <Tag name="Rarity" enumID="203" type="Rarity" value="1" />
-        <Tag name="Cost" enumID="48" type="Number" value="10" />
-        <Tag name="AttackVisualType" enumID="251" type="AttackVisualType" value="5" />
-        <Tag name="CardTextInHand" enumID="184" type="String">Take control of an enemy minion.</Tag>
-        <Tag name="DevState" enumID="268" type="DevState" value="2" />
-        <Tag name="Collectible" enumID="321" type="Bool" value="1" />
-        <Tag name="EnchantmentBirthVisual" enumID="330" type="EnchantmentVisualType" value="0" />
-        <Tag name="EnchantmentIdleVisual" enumID="331" type="EnchantmentVisualType" value="0" />
-        <Tag name="ArtistName" enumID="342" type="String">Sean O’Daniels</Tag>
-        <Tag name="FlavorText" enumID="351" type="String">Nominated as "Spell Most Likely to Make Your Opponent Punch the Wall."</Tag>
-        <Tag name="HowToGetThisCard" enumID="364" type="String">Unlocked at Level 10.</Tag>
-        <Tag name="HowToGetThisGoldCard" enumID="365" type="String">Unlocked at Level 49.</Tag>
+        <Tag enumID="185" type="String">Mind Control</Tag>
+        <Tag enumID="183" type="" value="2" />
+        <Tag enumID="202" type="" value="5" />
+        <Tag enumID="201" type="" value="3" />
+        <Tag enumID="199" type="" value="6" />
+        <Tag enumID="203" type="" value="1" />
+        <Tag enumID="48" type="" value="10" />
+        <Tag enumID="251" type="" value="5" />
+        <Tag enumID="184" type="String">Take control of an enemy minion.</Tag>
+        <Tag enumID="268" type="" value="2" />
+        <Tag enumID="321" type="" value="1" />
+        <Tag enumID="330" type="" value="0" />
+        <Tag enumID="331" type="" value="0" />
+        <Tag enumID="342" type="String">Sean O’Daniels</Tag>
+        <Tag enumID="351" type="String">Nominated as "Spell Most Likely to Make Your Opponent Punch the Wall."</Tag>
+        <Tag enumID="364" type="String">Unlocked at Level 10.</Tag>
+        <Tag enumID="365" type="String">Unlocked at Level 49.</Tag>
         <Power definition="3779b451-83fa-4a47-85cf-dc4fe87746a9">
             <PlayRequirement reqID="11" param="" />
             <PlayRequirement reqID="1" param="" />
@@ -61,15 +61,15 @@
         <TriggeredPowerHistoryInfo effectIndex="1" showInHistory="False" />
     </Entity>
     <Entity version="1" CardID="PlaceholderCard">
-        <Tag name="CardName" enumID="185" type="String">Placeholder Card</Tag>
-        <Tag name="CardSet" enumID="183" type="CardSet" value="7" />
-        <Tag name="CardType" enumID="202" type="CardType" value="4" />
-        <Tag name="Faction" enumID="201" type="Faction" value="3" />
-        <Tag name="Class" enumID="199" type="Class" value="4" />
-        <Tag name="Rarity" enumID="203" type="Rarity" value="4" />
-        <Tag name="Cost" enumID="48" type="Number" value="9" />
-        <Tag name="Health" enumID="45" type="Number" value="8" />
-        <Tag name="Atk" enumID="47" type="Number" value="6" />
-        <Tag name="CardTextInHand" enumID="184" type="String">Battlecry: Someone remembers to publish this card.</Tag>
+        <Tag enumID="185" type="String">Placeholder Card</Tag>
+        <Tag enumID="183" type="" value="7" />
+        <Tag enumID="202" type="" value="4" />
+        <Tag enumID="201" type="" value="3" />
+        <Tag enumID="199" type="" value="4" />
+        <Tag enumID="203" type="" value="4" />
+        <Tag enumID="48" type="" value="9" />
+        <Tag enumID="45" type="" value="8" />
+        <Tag enumID="47" type="" value="6" />
+        <Tag enumID="184" type="String">Battlecry: Someone remembers to publish this card.</Tag>
     </Entity>
 </CardDefs>
