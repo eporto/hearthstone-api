@@ -196,7 +196,7 @@ function doit(callback) {
                         processError = true;
                     }
 
-                    switch(tag.$.enumID) {
+                    switch (tag.$.enumID) {
                         /*
                          * Unknowns
                          * These are new enumIDs that have been added since
