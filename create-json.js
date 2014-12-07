@@ -186,7 +186,66 @@ function doit(callback) {
                  * 377    Found on Flame Leviathan and Burrowing Mine     1 - probably a Bool
                  * 389    Found on Dunemaul Shaman                        1 - probably a Bool
                  */
-                var knownTypes = ['String', ''];
+                var knownTypes = ['String', ''],
+                    nameMapper = {};
+
+                nameMapper['32'] = 'TriggerVisual';
+                nameMapper['45'] = 'Health';
+                nameMapper['47'] = 'Atk';
+                nameMapper['48'] = 'Cost';
+
+                nameMapper['114'] = 'Elite';
+                nameMapper['183'] = 'CardSet';
+                nameMapper['184'] = 'CardTextInHand';
+                nameMapper['185'] = 'CardName';
+                nameMapper['187'] = 'Durability';
+                nameMapper['189'] = 'Windfury';
+                nameMapper['190'] = 'Taunt';
+                nameMapper['191'] = 'Stealth';
+                nameMapper['192'] = 'Spellpower';
+                nameMapper['194'] = 'Divine Shield';
+                nameMapper['197'] = 'Charge';
+                nameMapper['199'] = 'Class';
+
+                nameMapper['200'] = 'Race';
+                nameMapper['201'] = 'Faction';
+                nameMapper['202'] = 'CardType';
+                nameMapper['203'] = 'Rarity';
+                nameMapper['205'] = 'Summoned';
+                nameMapper['208'] = 'Freeze';
+                nameMapper['212'] = 'Enrage';
+                nameMapper['215'] = 'Recall';
+                nameMapper['217'] = 'Deathrattle';
+                nameMapper['218'] = 'Battlecry';
+                nameMapper['219'] = 'Secret';
+                nameMapper['220'] = 'Combo';
+                nameMapper['251'] = 'AttackVisualType';
+                nameMapper['252'] = 'CardTextInPlay';
+                nameMapper['268'] = 'DevState';
+                nameMapper['293'] = 'Morph';
+
+                nameMapper['321'] = 'Collectible';
+                nameMapper['325'] = 'TargetingArrowText';
+                nameMapper['330'] = 'EnchantmentBirthVisual';
+                nameMapper['331'] = 'EnchantmentIdleVisual';
+                nameMapper['335'] = 'InvisibleDeathrattle';
+                nameMapper['338'] = 'OneTurnEffect';
+                nameMapper['339'] = 'Silence';
+                nameMapper['342'] = 'ArtistName';
+                nameMapper['349'] = 'ImmuneToSpellpower';
+                nameMapper['350'] = 'AdjacentBuff';
+                nameMapper['351'] = 'FlavorText';
+                nameMapper['355'] = 'GrantCharge';
+                nameMapper['361'] = 'HealTarget';
+                nameMapper['362'] = 'Aura';
+                nameMapper['363'] = 'Poisonous';
+                nameMapper['364'] = 'HowToGetThisCard';
+                nameMapper['365'] = 'HowToGetThisGoldCard';
+                nameMapper['367'] = 'AIMustPlay';
+                nameMapper['370'] = 'AffectedBySpellPower';
+                nameMapper['377'] = 'unknown377';
+                nameMapper['389'] = 'unknown389';
+
 
                 temporaryObject.Tag = {};
 
@@ -227,7 +286,7 @@ function doit(callback) {
                              * Values: Any Number
                              * The value will be parsed as a Number
                              */
-                            temporaryObject.Tag[tag.$.enumID] = +tag.$.value;
+                            temporaryObject.Tag[nameMapper[tag.$.enumID]] = +tag.$.value;
                             break;
 
                         /* Bools */
@@ -265,7 +324,7 @@ function doit(callback) {
                              * 0 is FALSE
                              * 1 is TRUE
                              */
-                            temporaryObject.Tag[tag.$.enumID] = tag.$.value ? true : false;
+                            temporaryObject.Tag[nameMapper[tag.$.enumID]] = tag.$.value ? true : false;
                             break;
 
                         /* Strings */
@@ -281,7 +340,7 @@ function doit(callback) {
                              * Values: String
                              * The value will be parsed as a String
                              */
-                            temporaryObject.Tag[tag.$.enumID] = tag._;
+                            temporaryObject.Tag[nameMapper[tag.$.enumID]] = tag._;
                             break;
 
                         default:
