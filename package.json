@@ -6,6 +6,7 @@
   "private": true,
   "main": "server.js",
   "scripts": {
+    "create-json": "node create-json.js > json/enUS.json",
     "generate-docs": "",
     "test": ""
   },
