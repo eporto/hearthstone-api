@@ -82,9 +82,9 @@ Coming Soon.
 [restful]: http://en.wikipedia.org/wiki/Representational_state_transfer
 
 
-[consumer-notes]: /relative-link-tbd
-[developer-notes]: /relative-link-tbd
-[requirements]: /relative-link-tbd
-[howto-setup]: /relative-link-tbd
-[howto-json]: /relative-link-tbd
-[howto-xml]: /relative-link-tbd
+[consumer-notes]: https://github.com/jamsyoung/hearthstone-api#consumer-notes
+[developer-notes]: https://github.com/jamsyoung/hearthstone-api#developer-notes
+[requirements]: https://github.com/jamsyoung/hearthstone-api#requirments
+[howto-setup]: https://github.com/jamsyoung/hearthstone-api#how-to-setup-for-development
+[howto-json]: https://github.com/jamsyoung/hearthstone-api#how-to-create-the-json-file
+[howto-xml]: https://github.com/jamsyoung/hearthstone-api#how-to-extract-the-xml-from-the-hearthstone-app
