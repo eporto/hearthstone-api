@@ -51,7 +51,7 @@ may want to contribute to this project. :smile:
 This assumes you are on OS X.
 
 
-### Requirments
+### Requirements
 - [NodeJS][node] 0.10.33 _(probably works with any 0.10.x version)_
 - [Disunity][disunity] 0.3.4
 - [jq][jq] 1.4
