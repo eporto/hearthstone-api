@@ -26,24 +26,64 @@ cardSchema = new Schema({
     version: Number,
     CardID: String,
     Tag: {
-        CardName: String,
-        CardSet: Number,
-        CardType: Number,
-        Faction: Number,
-        Rarity: Number,
-        Cost: Number,
-        Atk: Number,
         Health: Number,
+        Atk: Number,
+        Cost: Number,
+        CardSet: Number,
+        Durability: Number,
+        Class: Number,
+        Race: Number,
+        Faction: Number,
+        CardType: Number,
+        Rarity: Number,
+        Recall: Number,
         AttackVisualType: Number,
-        CardTextInHand: String,
         DevState: Number,
-        Collectible: Boolean,
         EnchantmentBirthVisual: Number,
         EnchantmentIdleVisual: Number,
+
+        TriggerVisual: Boolean,
+        Elite: Boolean,
+        Windfury: Boolean,
+        Taunt: Boolean,
+        Stealth: Boolean,
+        Spellpower: Boolean,
+        'Divine Shield': Boolean,
+        Charge: Boolean,
+        Summoned: Boolean,
+        Freeze: Boolean,
+        Enrage: Boolean,
+        Deathrattle: Boolean,
+        Battlecry: Boolean,
+        Secret: Boolean,
+        Combo: Boolean,
+        Morph: Boolean,
+        Collectible: Boolean,
+        InvisibleDeathrattle: Boolean,
+        OneTurnEffect: Boolean,
+        Silence: Boolean,
+        ImmuneToSpellpower: Boolean,
+        AdjacentBuff: Boolean,
+        GrantCharge: Boolean,
+        HealTarget: Boolean,
+        Aura: Boolean,
+        Poisonous: Boolean,
+        AIMustPlay: Boolean,
+        AffectedBySpellPower: Boolean,
+
+        CardTextInHand: String,
+        CardName: String,
+        CardTextInPlay: String,
+        TargetingArrowText: String,
         ArtistName: String,
-        HowToGetThisGoldCard: String,
         FlavorText: String,
-        Taunt: Boolean
+        HowToGetThisCard: String,
+        HowToGetThisGoldCard: String,
+
+        /* New enumIDs found in Hearthstone-2.x */
+
+        unknown377: Number,
+        unknown389: Number
     }
 });
 
@@ -53,30 +93,7 @@ Card = mongoose.model('Card', cardSchema);
 
 function fillDatastore(callback) {
     cardData.forEach(function (item) {
-        var card = new Card({
-                version: item.version,
-                CardID: item.CardID,
-                Tag: {
-                    CardName:               item.Tag.CardName,
-                    CardSet:                item.Tag.CardSet,
-                    CardType:               item.Tag.CardType,
-                    Faction:                item.Tag.Faction,
-                    Rarity:                 item.Tag.Rarity,
-                    Cost:                   item.Tag.Cost,
-                    Atk:                    item.Tag.Atk,
-                    Health:                 item.Tag.Health,
-                    AttackVisualType:       item.Tag.AttackVisualType,
-                    CardTextInHand:         item.Tag.CardTextInHand,
-                    DevState:               item.Tag.DevState,
-                    Collectible:            item.Tag.Collectible,
-                    EnchantmentBirthVisual: item.Tag.EnchantmentBirthVisual,
-                    EnchantmentIdleVisual:  item.Tag.EnchantmentIdleVisual,
-                    ArtistName:             item.Tag.ArtistName,
-                    HowToGetThisGoldCard:   item.Tag.HowToGetThisGoldCard,
-                    FlavorText:             item.Tag.FlavorText,
-                    Taunt:                  item.Tag.Taunt
-                }
-            });
+        var card = new Card(item);
 
         card.save(function (error) {
             if (error) {
