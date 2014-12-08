@@ -3,7 +3,7 @@
 var util = require('util'),
     mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    cardData = require('./json/enUS').cards,
+    cardData = require('../json/enUS').cards,
     cardSchema,
     Card,
     username = process.env.MONGODB_USERNAME,

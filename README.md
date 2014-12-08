@@ -5,9 +5,8 @@ cards in the [Blizzard][blizzard] game [Hearthstone][hearthstone].
 This project is under active development and the goal is to have a working API
 available on the internet in December 2014.
 
-Stay tuned.
-
-![](http://us.battle.net/hearthstone/static/images/home/header-bg-small-gvg.jpg)
+Currently this only supports the enUS locale.  There will be support for all of
+the other languages in the future.
 
 
 
@@ -21,7 +20,7 @@ Stay tuned.
 - [Consumer Notes][consumer-notes]
 - [Developer Notes][developer-notes]
   - [Requirements][requirements]
-  - [How to setup for development][howto-setup]
+  - [How to setup hearthstone-api for development][howto-setup]
   - [How to create the JSON file][howto-json]
   - [How to extract the XML from the Hearthstone app][howto-xml]
 
@@ -49,16 +48,30 @@ use the API.
 This section is here for when I forget what I did, and for other developers that
 may want to contribute to this project. :smile:
 
+This assumes you are on OS X.
+
 
 ### Requirments
-- [NodeJS][node] 0.10.33 _(probaby works with any 0.10.x version)_
-- [Disunity][disunity]
-- [jq][jq] 1.4 _(not required, but highly recommended)_
+- [NodeJS][node] 0.10.33 _(probably works with any 0.10.x version)_
+- [Disunity][disunity] 0.3.4
+- [jq][jq] 1.4
+
+There are scripts in this project that will assume that `jq` is installed and
+available in your $PATH.  The Disunity and heartstone-api directories should
+both be on the same level.
+
+You will need to `chmod +x disunity.sh` after extracting the disunity release.
 
 
-### How to setup for development
+### How to setup hearthstone-api for development
 ```bash
 $ npm install
+```
+
+
+### How to extract the XML from the Hearthstone app
+```bash
+$ npm run extract-game-data
 ```
 
 
@@ -68,14 +81,10 @@ $ npm run create-json
 ```
 
 
-### How to extract the XML from the Hearthstone app
-Coming Soon.
-
-
 
 
 [blizzard]: http://blizzard.com
-[disunity]: https://github.com/ata4/disunity
+[disunity]: https://github.com/ata4/disunity/releases
 [hearthstone]: https://battle.net/hearthstone
 [jq]: http://stedolan.github.io/jq/
 [node]: http://nodejs.org
@@ -85,6 +94,6 @@ Coming Soon.
 [consumer-notes]: https://github.com/jamsyoung/hearthstone-api#consumer-notes
 [developer-notes]: https://github.com/jamsyoung/hearthstone-api#developer-notes
 [requirements]: https://github.com/jamsyoung/hearthstone-api#requirments
-[howto-setup]: https://github.com/jamsyoung/hearthstone-api#how-to-setup-for-development
+[howto-setup]: https://github.com/jamsyoung/hearthstone-api#how-to-setup-hearthstone-api-for-development
 [howto-json]: https://github.com/jamsyoung/hearthstone-api#how-to-create-the-json-file
 [howto-xml]: https://github.com/jamsyoung/hearthstone-api#how-to-extract-the-xml-from-the-hearthstone-app

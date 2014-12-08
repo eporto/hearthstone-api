@@ -4,10 +4,8 @@ var fs = require('fs'),
     xml2js = require('xml2js');
 
 
-
-
 function doit(callback) {
-    fs.readFile(__dirname + '/xml/enUS-v2.xml', function (readError, xml) {
+    fs.readFile(__dirname + '/../xml/enUS.xml', function (readError, xml) {
         var parser = new xml2js.Parser();
 
         parser.parseString(xml, function (parseError, result) {

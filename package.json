@@ -6,13 +6,15 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "create-json": "node create-json.js > json/enUS.json",
+    "create-json": "node scripts/create-json.js > json/enUS.json",
+    "extract-game-data": "scripts/extract-game-data.sh",
+    "fill-datastore": "node scripts/fill-datastore.js",
     "generate-docs": "",
     "test": ""
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:jamsyoung/hearthstone-api.git"
   },
   "engines": {
     "node": "0.10.33"
