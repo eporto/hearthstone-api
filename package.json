@@ -17,7 +17,9 @@
   "engines": {
     "node": "0.10.33"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "3.8.20"
+  },
   "devDependencies": {
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.10.0",
