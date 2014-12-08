@@ -26,7 +26,7 @@ function doit(callback) {
 
                 for (key in dollar) {
                     if (knownProperties.indexOf(key) === -1) {
-                        console.log('NEW DOLLAR ($) PROPERTY FOUND! = %s %s', key, JSON.stringify(dollar));
+                        console.log('NEW DOLLAR ($) PROPERTY FOUND! = %s', JSON.stringify(dollar));
                         processError = true;
                     }
 
@@ -79,7 +79,7 @@ function doit(callback) {
 
                     for (key in power) {
                         if (knownProperties.indexOf(key) === -1) {
-                            console.log('NEW POWER PROPERTY FOUND! - %s %s', key, JSON.stringify(power));
+                            console.log('NEW POWER PROPERTY FOUND! - %s', JSON.stringify(power));
                             processError = true;
                         }
                     }
