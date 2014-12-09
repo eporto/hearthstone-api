@@ -32,6 +32,11 @@ if [ "${CHANGE_FOUND}" == true ];  then
 
 
 
+    echo -e "${INFO} Backing up current enUS.xml to enUS-${PREVIOUS_VERSION}.xml"
+    mv -v xml/enUS.xml xml/enUS-${PREVIOUS_VERSION}.xml
+    
+
+
     echo -e "${INFO} Moving xml into project"
     mv -v /Applications/Hearthstone/Data/OSX/cardxml0/CAB-cardxml0/TextAsset/enUS.txt xml/enUS.xml
 
