@@ -8,6 +8,8 @@ available on the internet in December 2014.
 Currently this only supports the enUS locale.  There will be support for all of
 the other languages in the future.
 
+**Last Build:** [![Circle CI](https://circleci.com/gh/jamsyoung/hearthstone-api/tree/master.svg?style=svg&circle-token=9290e611b5e2079bd4e55a85b07b5f52b3de0743)](https://circleci.com/gh/jamsyoung/hearthstone-api/tree/master)
+
 
 
 
