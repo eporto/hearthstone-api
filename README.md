@@ -3,7 +3,8 @@ The goal of this project is to have a [RESTful API][restful] for all of the
 cards in the [Blizzard][blizzard] game [Hearthstone][hearthstone].
 
 This project is under active development and the goal is to have a working API
-available on the internet in December 2014.
+available on the internet in December 2014. (and it was, I just didn't tell
+anyone about it)
 
 Currently this only supports the enUS locale.  There will be support for all of
 the other languages in the future.
@@ -66,22 +67,34 @@ You will need to `chmod +x disunity.sh` after extracting the disunity release.
 
 
 ### How to setup hearthstone-api for development
-```bash
+
+```shell
 $ npm install
 ```
 
 
 ### How to extract the XML from the Hearthstone app
-```bash
+
+```shell
 $ npm run extract-game-data
 ```
 
 
 ### How to create the JSON file
-```bash
+
+```shell
 $ npm run create-json
 ```
 
+
+## How to fill the datastore
+This will currently fail if the datastore is not cleared prior to running this
+script.
+
+```shell
+$ . set-env-conf
+$ npm run fill-datastore
+```
 
 
 
