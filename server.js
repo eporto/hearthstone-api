@@ -89,10 +89,12 @@ function getClasses(request, response, next) {
 
 
 server.get('/rest/api/latest/cards', getAllCards);
+server.get('/rest/api/latest/classes', getClasses);
+server.get('/rest/api/latest/cards/class/:class', getCardsByClass);
+
 server.get('/rest/api/latest/card/id/:id', getCardsById);
 server.get('/rest/api/latest/card/name/:name', getCardsByName);
-server.get('/rest/api/latest/card/class/:class', getCardsByClass);
-server.get('/rest/api/latest/classes', getClasses);
+
 
 
 
