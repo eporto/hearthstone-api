@@ -1,6 +1,7 @@
 'use strict';
 
-var util = require('util'),
+var pkg = require('./package'),
+    hearthstoneInfo = require('./json/info'),
     restify = require('restify'),
     server = restify.createServer({name: 'Hearthstone API'}),
     cards = require('./models/cardSchema');
@@ -95,7 +96,9 @@ server.get('/rest/api/latest/cards/class/:class', getCardsByClass);
 server.get('/rest/api/latest/card/id/:id', getCardsById);
 server.get('/rest/api/latest/card/name/:name', getCardsByName);
 
-
+server.get('/healthcheck', function (request, response, next) {
+    response.send({'package': pkg, info: hearthstoneInfo});
+});
 
 
 
