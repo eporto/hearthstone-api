@@ -11707,17 +11707,6 @@ Summon two 2/1 minions.</Tag>
       <PlayRequirement reqID="17" param="" />
     </Power>
   </Entity>
-  <Entity version="2" CardID="XXX_094">
-    <Tag enumID="185" type="String">AI Buddy - Blank Slate</Tag>
-    <Tag enumID="183" type="" value="8" />
-    <Tag enumID="202" type="" value="4" />
-    <Tag enumID="47" type="" value="1" />
-    <Tag enumID="45" type="" value="1" />
-    <Tag enumID="184" type="String">Spawn into play to clear the entire board, both hands, both decks, all mana and all secrets.</Tag>
-    <Tag enumID="330" type="" value="0" />
-    <Tag enumID="331" type="" value="0" />
-    <Power definition="68d273c4-6157-45c9-940e-d53fba4055b7" />
-  </Entity>
   <Entity version="2" CardID="XXX_095">
     <Tag enumID="185" type="String">AI Buddy - All Charge!</Tag>
     <Tag enumID="183" type="" value="8" />

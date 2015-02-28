@@ -6902,7 +6902,6 @@ Draw a card.</Tag>
     <Power definition="36bfefdd-48f7-43dd-88bb-36c3b71f6c45">
       <PlayRequirement reqID="11" param="" />
       <PlayRequirement reqID="2" param="" />
-      <PlayRequirement reqID="1" param="" />
     </Power>
   </Entity>
   <Entity version="2" CardID="EX1_304">
@@ -11707,17 +11706,6 @@ Summon two 2/1 minions.</Tag>
       <PlayRequirement reqID="17" param="" />
     </Power>
   </Entity>
-  <Entity version="2" CardID="XXX_094">
-    <Tag enumID="185" type="String">AI Buddy - Blank Slate</Tag>
-    <Tag enumID="183" type="" value="8" />
-    <Tag enumID="202" type="" value="4" />
-    <Tag enumID="47" type="" value="1" />
-    <Tag enumID="45" type="" value="1" />
-    <Tag enumID="184" type="String">Spawn into play to clear the entire board, both hands, both decks, all mana and all secrets.</Tag>
-    <Tag enumID="330" type="" value="0" />
-    <Tag enumID="331" type="" value="0" />
-    <Power definition="68d273c4-6157-45c9-940e-d53fba4055b7" />
-  </Entity>
   <Entity version="2" CardID="XXX_095">
     <Tag enumID="185" type="String">AI Buddy - All Charge!</Tag>
     <Tag enumID="183" type="" value="8" />
@@ -12637,7 +12625,7 @@ Deathrattle:&lt;/b&gt; Summon a 1/2 Slime with &lt;b&gt;Taunt&lt;/b&gt;.</Tag>
     <Tag enumID="48" type="" value="1" />
     <Tag enumID="47" type="" value="1" />
     <Tag enumID="45" type="" value="2" />
-    <Tag enumID="184" type="String">Whenever you summon a minion with &lt;b&gt;Deathrattle&lt;/b&gt;, gain +1 Attack.</Tag>
+    <Tag enumID="184" type="String">Whenever you summon a minion with &lt;b&gt;Deathrattle&lt;/b&gt;, gain +1/+1.</Tag>
     <Tag enumID="330" type="" value="0" />
     <Tag enumID="331" type="" value="0" />
     <Tag enumID="351" type="String">In a world where you can run to a spirit healer and resurrect yourself, Undertakers do pretty light business.</Tag>
@@ -12656,7 +12644,7 @@ Deathrattle:&lt;/b&gt; Summon a 1/2 Slime with &lt;b&gt;Taunt&lt;/b&gt;.</Tag>
     <Tag enumID="184" type="String">Increased stats.</Tag>
     <Tag enumID="330" type="" value="0" />
     <Tag enumID="331" type="" value="0" />
-    <Power definition="798787ab-ddbb-4a01-8893-feca0dcdccbc" />
+    <Power definition="ceb8ba82-d764-4151-9c27-7ac44c35eb0c" />
   </Entity>
   <Entity version="2" CardID="FP1_029">
     <Tag enumID="185" type="String">Dancing Swords</Tag>
