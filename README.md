@@ -162,8 +162,8 @@ $ npm run fill-datastore
 
 [how-do-i-use]: https://github.com/jamsyoung/hearthstone-api#how-do-i-use-this-api
 [id-mappings]: https://github.com/jamsyoung/hearthstone-api#id-mappings
-[development-notes]: https://github.com/jamsyoung/hearthstone-api#develpment-notes
-[requirements]: https://github.com/jamsyoung/hearthstone-api#requirments
+[development-notes]: https://github.com/jamsyoung/hearthstone-api#development-notes
+[requirements]: https://github.com/jamsyoung/hearthstone-api#requirements
 [howto-setup]: https://github.com/jamsyoung/hearthstone-api#how-to-setup-hearthstone-api-for-development
 [howto-json]: https://github.com/jamsyoung/hearthstone-api#how-to-create-the-json-file
 [howto-xml]: https://github.com/jamsyoung/hearthstone-api#how-to-extract-the-xml-from-the-hearthstone-app
