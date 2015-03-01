@@ -1,0 +1,160 @@
+{
+    "basePath": "https://api-2445581159321.apicast.io:443",
+    "apiVersion": "v1.2",
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/rest/api/latest/cards",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "List all cards",
+                    "description": "<p>List all cards</p>",
+                    "nickname": "List all cards",
+                    "group": "cards",
+                    "parameters": [
+                        {
+                            "name": "user_key",
+                            "description": "Your API access key",
+                            "dataType": "string",
+                            "paramType": "query",
+                            "threescale_name": "user_keys",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rest/api/latest/classes",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "List all class ids",
+                    "description": "<p>List all classes ids</p>",
+                    "nickname": "List all class ids",
+                    "group": "classes",
+                    "parameters": [
+                        {
+                            "name": "user_key",
+                            "description": "Your API access key",
+                            "dataType": "string",
+                            "paramType": "query",
+                            "threescale_name": "user_keys",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rest/api/latest/card/id/{cardId}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get card by id",
+                    "description": "<p>Get card by id</p>",
+                    "nickname": "Get card by id",
+                    "group": "cards",
+                    "parameters": [
+                        {
+                            "name": "user_key",
+                            "description": "Your API access key",
+                            "dataType": "string",
+                            "paramType": "query",
+                            "threescale_name": "user_keys",
+                            "required": true
+                        },
+                        {
+                            "name": "cardId",
+                            "description": "Id for a card",
+                            "dataType": "string",
+                            "paramType": "path",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rest/api/latest/card/name/{cardName}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get card by name",
+                    "description": "<p>Get card by name</p>",
+                    "nickname": "Get card by name",
+                    "group": "cards",
+                    "parameters": [
+                        {
+                            "name": "user_key",
+                            "description": "Your API access key",
+                            "dataType": "string",
+                            "paramType": "query",
+                            "threescale_name": "user_keys",
+                            "required": true
+                        },
+                        {
+                            "name": "cardName",
+                            "description": "Name for a card",
+                            "dataType": "string",
+                            "paramType": "path",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rest/api/latest/cards/class/{classId}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get Cards by class id",
+                    "description": "<p>Get cards by class id</p>",
+                    "nickname": "Get cards by class id",
+                    "group": "classes",
+                    "parameters": [
+                        {
+                            "name": "user_key",
+                            "description": "Your API access key",
+                            "dataType": "string",
+                            "paramType": "query",
+                            "threescale_name": "user_keys",
+                            "required": true
+                        },
+                        {
+                            "name": "classId",
+                            "description": "Id for a class",
+                            "dataType": "number",
+                            "paramType": "path",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/healthcheck",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Healthcheck",
+                    "description": "<p>Healthcheck</p>",
+                    "nickname": "Healthcheck",
+                    "group": "healthcheck",
+                    "parameters": [
+                        {
+                            "name": "user_key",
+                            "description": "Your API access key",
+                            "dataType": "string",
+                            "paramType": "query",
+                            "threescale_name": "user_keys",
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
