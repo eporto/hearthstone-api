@@ -1,11 +1,12 @@
 'use strict';
 
 var fs = require('fs'),
-    xml2js = require('xml2js');
+    xml2js = require('xml2js'),
+    language = process.argv[2] || 'enUS';
 
 
-function doit(callback) {
-    fs.readFile(__dirname + '/../xml/enUS.xml', function (readError, xml) {
+function doit(language, callback) {
+    fs.readFile(__dirname + '/../xml/' + language + '.xml', function (readError, xml) {
         var parser = new xml2js.Parser();
 
         parser.parseString(xml, function (parseError, result) {
@@ -19,10 +20,9 @@ function doit(callback) {
 
 
             function processDollar(dollar) {
-                var knownProperties = ['version', 'CardID'],
-                    key;
+                var knownProperties = ['version', 'CardID'];
 
-                for (key in dollar) {
+                Object.getOwnPropertyNames(dollar).forEach(function (key) {
                     if (knownProperties.indexOf(key) === -1) {
                         console.log('NEW DOLLAR ($) PROPERTY FOUND! = %s', JSON.stringify(dollar));
                         processError = true;
@@ -33,7 +33,7 @@ function doit(callback) {
                     } else {
                         temporaryObject[key] = dollar[key];
                     }
-                }
+                });
             }
 
 
@@ -293,12 +293,10 @@ function doit(callback) {
 
 
             function processEntity(entity) {
-                var property;
-
                 /* make sure we are working with a clean object */
                 temporaryObject = {};
 
-                for (property in entity) {
+                Object.getOwnPropertyNames(entity).forEach(function (property) {
                     switch (property) {
                         case '$':
                             processDollar(entity[property]);
@@ -328,7 +326,7 @@ function doit(callback) {
                             console.log('NEW PROPERTY FOUND! - %s', property, JSON.stringify(entity[property]));
                             processError = true;
                     }
-                }
+                });
 
 
                 /*
@@ -352,7 +350,7 @@ function doit(callback) {
 
 
 
-doit(function (error, data) {
+doit(language, function (error, data) {
     if (!error) {
         console.log(JSON.stringify(data));
     } else {

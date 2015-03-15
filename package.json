@@ -6,8 +6,9 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "create-json": "node scripts/create-json.js > json/enUS.json",
+    "create-json": "scripts/create-json-runner.sh",
     "extract-game-data": "scripts/extract-game-data.sh",
+    "extract-game-data-force": "scripts/extract-game-data.sh -f",
     "fill-datastore": "node scripts/fill-datastore.js",
     "generate-docs": "",
     "start": "node server.js",
