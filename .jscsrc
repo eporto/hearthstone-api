@@ -3,6 +3,7 @@
     "disallowKeywords"                          : ["with"],
     "disallowKeywordsOnNewLine"                 : ["else"],
     "disallowMixedSpacesAndTabs"                : true,
+    "disallowMultipleLineStrings"               : true,
     "disallowNewlineBeforeBlockStatements"      : true,
     "disallowQuotedKeysInObjects"               : "allButReserved",
     "disallowSpaceAfterObjectKeys"              : true,
@@ -16,6 +17,8 @@
     "disallowTrailingComma"                     : true,
     "disallowTrailingWhitespace"                : true,
     "disallowYodaConditions"                    : true,
+
+    "maximumLineLength"                         : 160,
 
     "requireBlocksOnNewline"                    : 1,
     "requireCapitalizedConstructors"            : true,
@@ -38,5 +41,6 @@
 
     "validateIndentation"                       : 4,
     "validateJSDoc"                             : {"checkParamNames": true, "checkRedundantParams": true, "requireParamTypes": true},
-    "validateLineBreaks"                        : "LF"
+    "validateLineBreaks"                        : "LF",
+    "validateQuoteMarks"                        : {"mark": "'", "escape": true}
 }

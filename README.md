@@ -1,6 +1,9 @@
 # Hearthstone API
 The goal of this project is to have a [RESTful API][restful] for all of the
-cards in the [Blizzard][blizzard] game [Hearthstone][hearthstone].
+cards in the [Blizzard][blizzard] game [Hearthstone][hearthstone].  This does
+have support for all 14 languages that Hearthstone supports.  This includes
+deDE, enGB, enUS, esES, esMX, frFR, itIT, koKR, plPL, ptBR, ptPT, ruRU, zhCN,
+and zhTW.
 
 This project is currently in an alpha state and is available for limited use.
 
