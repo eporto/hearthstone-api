@@ -1,3 +1,9 @@
+## Content update - 2015-03-20
+- Update for Hearthstone 2.3.0.8108, which only contains some updated
+  translations for a few cards in Italian, Korean, and Russian.
+
+
+
 ## 1.1.0
 Issue #9 / Pull Request #10
 
