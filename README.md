@@ -99,6 +99,7 @@ Card Sets                   Card Types          Races               Factions
 11 Promo                                        24 Dragon
 12 Curse of Naxxramas
 13 Goblins vs Gnomes
+14 Blackrock Mountain
 16 Credits
 ```
 
@@ -154,6 +155,40 @@ $ npm run fill-datastore
 ```
 
 
+--------------------------------------------------------------------------------
+
+
+## Useful queries
+
+### Classes
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {Class}' | sort | uniq
+```
+
+### Card Sets
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {CardSet}' | sort | uniq
+```
+
+### Card Types
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {CardType}' | sort | uniq
+```
+
+### Races
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {Race}' | sort | uniq
+```
+
+### Factions
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {Faction}' | sort | uniq
+```
+
+### View all the cards in a set
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {CardName, CardSet, Collectible, Rarity, CardType, Cost, Atk, Health, Elite, CardTextInHand, Race, FlavorText}' | grep '"CardSet":14' | jq '.'
+```
 
 
 [blizzard]: http://blizzard.com

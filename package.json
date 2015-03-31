@@ -1,6 +1,6 @@
 {
   "name": "hearthstone-api",
-  "version": "1.1.0",
+  "version": "1.1.0-2.4.0.8311",
   "description": "Hearthstone API",
   "author": "James Young <jmeyoung@gmail.com> (http://jamsyoung.com)",
   "private": true,

@@ -203,7 +203,10 @@ function doit(language, callback) {
                          * number until a reason is found not to.
                          */
                         case '377':
+                        case '380':  /* added in 2.4.0.8311 */
                         case '389':
+                        case '401':  /* added in 2.4.0.8311 */
+                        case '402':  /* added in 2.4.0.8311 */
 
                         /* Numbers */
                         case '45':   /* Health */
