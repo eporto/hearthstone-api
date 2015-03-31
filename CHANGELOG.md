@@ -1,4 +1,9 @@
-## Content update - 2015-03-20
+## 1.1.0-2.4.0.8311 (content update)
+- Update for Heartstone 2.4.0.8311 content.  Contains new cards for Blackrock
+  Mountain Adventure.
+
+
+## 1.1.0-2.3.0.8108 (content update)
 - Update for Hearthstone 2.3.0.8108, which only contains some updated
   translations for a few cards in Italian, Korean, and Russian.
 
