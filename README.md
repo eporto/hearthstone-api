@@ -73,19 +73,19 @@ $ curl -sS 'https://api-2445581159321.apicast.io:443/rest/api/latest/card/id/PRO
 ## ID Mappings
 
 ```
-Classes       Card Sets          Card Types      Races                   Faction
-------------  -----------------  --------------  ----------------------  -------
-0  Developer  [        8      ]  [  4         ]  [                    ]  [ ]
-2  Druid      [2 3       12 13]  [3 4 5 6   10]  [      17 20         ]  [3]
-3  Hunter     [2 3 5     12 13]  [3 4 5 6 7 10]  [      17 20         ]  [3]
-4  Mage       [2 3 5 7   12 13]  [3 4 5 6   10]  [      17            ]  [3]
-5  Paladin    [2 3       12 13]  [3 4 5 6 7 10]  [      17            ]  [3]
-6  Priest     [2 3       12 13]  [3 4 5 6   10]  [      17            ]  [3]
-7  Rogue      [2 3       12 13]  [3 4 5 6 7 10]  [      17       23   ]  [3]
-8  Shaman     [2 3       12 13]  [3 4 5 6 7 10]  [14    17    21      ]  [3]
-9  Warlock    [2 3       12 13]  [3 4 5 6 7 10]  [   15 17            ]  [3]
-10 Warrior    [1 3     8 12 13]  [3 4 5 6 7 10]  [      17            ]  [3]
-11 Dream      [  3            ]  [  4 5       ]  [                  24]  [ ]
+Classes       Card Sets             Card Types      Races                   Faction
+------------  --------------------  --------------  ----------------------  -------
+0  Developer  [        8         ]  [  4         ]  [                    ]  [ ]
+2  Druid      [2 3       12 13 14]  [3 4 5 6   10]  [      17 20         ]  [3]
+3  Hunter     [2 3 5     12 13 14]  [3 4 5 6 7 10]  [      17 20         ]  [3]
+4  Mage       [2 3 5 7   12 13 14]  [3 4 5 6   10]  [      17            ]  [3]
+5  Paladin    [2 3       12 13 14]  [3 4 5 6 7 10]  [      17          24]  [3]
+6  Priest     [2 3       12 13 14]  [3 4 5 6   10]  [      17          24]  [3]
+7  Rogue      [2 3       12 13 14]  [3 4 5 6 7 10]  [      17       23   ]  [3]
+8  Shaman     [2 3       12 13 14]  [3 4 5 6 7 10]  [14    17    21      ]  [3]
+9  Warlock    [2 3       12 13 14]  [3 4 5 6 7 10]  [   15 17            ]  [3]
+10 Warrior    [2 3     8 12 13 14]  [3 4 5 6 7 10]  [      17            ]  [3]
+11 Dream      [  3               ]  [  4 5       ]  [                  24]  [ ]
 
 
 Card Sets                   Card Types          Races               Factions
@@ -159,6 +159,7 @@ $ npm run fill-datastore
 
 
 ## Useful queries
+Used to generate the ID Mappings above.
 
 ### Classes
 ```shell
@@ -188,6 +189,14 @@ $ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {Faction}' | 
 ### View all the cards in a set
 ```shell
 $ curl -sS localhost:3000/rest/api/latest/cards | jq -c '.[].Tag | {CardName, CardSet, Collectible, Rarity, CardType, Cost, Atk, Health, Elite, CardTextInHand, Race, FlavorText}' | grep '"CardSet":14' | jq '.'
+```
+
+### View Category by Class
+```shell
+$ curl -sS localhost:3000/rest/api/latest/cards  | jq -c '.[].Tag | {Class, CardSet}' | sort | uniq
+$ curl -sS localhost:3000/rest/api/latest/cards  | jq -c '.[].Tag | {Class, CardType}' | sort | uniq
+$ curl -sS localhost:3000/rest/api/latest/cards  | jq -c '.[].Tag | {Class, Race}' | sort | uniq
+$ curl -sS localhost:3000/rest/api/latest/cards  | jq -c '.[].Tag | {Class, Faction}' | sort | uniq
 ```
 
 
