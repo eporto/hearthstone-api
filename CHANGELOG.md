@@ -1,3 +1,7 @@
+## 1.1.1-2.4.0.8311
+- Add 3 new enumIDs that were not being mapped before.
+
+
 ## 1.1.0-2.4.0.8311 (content update)
 - Update for Heartstone 2.4.0.8311 content.  Contains new cards for Blackrock
   Mountain Adventure.
