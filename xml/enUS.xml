@@ -11618,14 +11618,17 @@ Summon two 2/1 minions.</Tag>
   </Entity>
   <Entity version="2" CardID="XXX_053">
     <MasterPower>aac2ae6e-541a-4d10-86a7-2fb25420cd88</MasterPower>
-    <Tag enumID="185" type="String">Armor</Tag>
+    <Tag enumID="185" type="String">Armor 100</Tag>
     <Tag enumID="183" type="" value="8" />
     <Tag enumID="202" type="" value="5" />
     <Tag enumID="48" type="" value="0" />
-    <Tag enumID="184" type="String">Give your Hero +100 Armor</Tag>
+    <Tag enumID="184" type="String">Give target Hero +100 Armor</Tag>
     <Tag enumID="330" type="" value="0" />
     <Tag enumID="331" type="" value="0" />
-    <Power definition="aac2ae6e-541a-4d10-86a7-2fb25420cd88" />
+    <Power definition="aac2ae6e-541a-4d10-86a7-2fb25420cd88">
+      <PlayRequirement reqID="11" param="" />
+      <PlayRequirement reqID="17" param="" />
+    </Power>
   </Entity>
   <Entity version="2" CardID="XXX_054">
     <MasterPower>26c3fb5e-b6ab-4554-b406-b1b28f081cf8</MasterPower>
@@ -11680,7 +11683,7 @@ Summon two 2/1 minions.</Tag>
   </Entity>
   <Entity version="2" CardID="XXX_057">
     <MasterPower>148ff83a-1bf1-4556-be55-1018087e5f82</MasterPower>
-    <Tag enumID="185" type="String">Destroy Secrets</Tag>
+    <Tag enumID="185" type="String">Destroy Target Secrets</Tag>
     <Tag enumID="183" type="" value="8" />
     <Tag enumID="202" type="" value="5" />
     <Tag enumID="48" type="" value="0" />
@@ -14317,6 +14320,7 @@ Draw 2 cards.</Tag>
     <Tag enumID="351" type="String">If you can't find a bomb to throw, just pick up any goblin invention and throw that.</Tag>
     <Tag enumID="218" type="" value="1" />
     <Power definition="323790bb-9083-4c9f-9c11-3a5c2c6b94d3" />
+    <Power definition="d4d7eec4-ef9d-4bcb-a1ac-06538a7c17d4" />
   </Entity>
   <Entity version="2" CardID="GVG_005">
     <MasterPower>4ad1f03a-5383-45c0-8cf5-d77cc52d5f23</MasterPower>
@@ -15889,7 +15893,7 @@ Your hero is &lt;b&gt;Immune&lt;/b&gt;.</Tag>
     <Tag enumID="330" type="" value="0" />
     <Tag enumID="331" type="" value="0" />
     <Tag enumID="351" type="String">He's burly because he does CrossFit.</Tag>
-    <Tag enumID="342" type="String">Chris Rahn</Tag>
+    <Tag enumID="342" type="String">Aleksi Briclot</Tag>
     <Tag enumID="32" type="" value="1" />
     <Power definition="dcd476b1-aa43-47ec-a2c4-30a4f22d71c7" />
     <TriggeredPowerHistoryInfo effectIndex="0" showInHistory="False" />
@@ -19494,18 +19498,6 @@ Gain 4 Armor.</Tag>
     <Tag enumID="331" type="" value="0" />
     <Power definition="102e2f97-d5e0-438b-9c17-ee104c65f346" />
   </Entity>
-  <Entity version="2" CardID="BRMC_01">
-    <Tag enumID="185" type="String">Ragnaros the Firelord</Tag>
-    <Tag enumID="183" type="" value="14" />
-    <Tag enumID="202" type="" value="3" />
-    <Tag enumID="45" type="" value="30" />
-  </Entity>
-  <Entity version="2" CardID="BRMC_02">
-    <Tag enumID="185" type="String">Nefarian</Tag>
-    <Tag enumID="183" type="" value="14" />
-    <Tag enumID="202" type="" value="3" />
-    <Tag enumID="45" type="" value="30" />
-  </Entity>
   <Entity version="2" CardID="BRM_001">
     <MasterPower>d108222b-8e61-4b5c-8f39-085e495e3a0e</MasterPower>
     <Tag enumID="185" type="String">Solemn Vigil</Tag>
@@ -20258,6 +20250,7 @@ Deal 8 damage to a random enemy. TWICE.</Tag>
     <Tag enumID="342" type="String">Wayne Reynolds</Tag>
     <Tag enumID="365" type="String">Can be crafted after completing Blackrock Depths.</Tag>
     <Tag enumID="364" type="String">Unlocked by completing Blackrock Depths.</Tag>
+    <Tag enumID="32" type="" value="1" />
     <Power definition="61826561-9d9d-4565-8e6e-6bac9c578cc5" />
     <TriggeredPowerHistoryInfo effectIndex="0" showInHistory="False" />
   </Entity>
@@ -20269,6 +20262,8 @@ Deal 8 damage to a random enemy. TWICE.</Tag>
     <Tag enumID="330" type="" value="0" />
     <Tag enumID="331" type="" value="0" />
     <Power definition="83c5012c-47df-4d74-8f62-eedc48821ca4" />
+    <Power definition="0435df39-db0f-491e-90fa-ca849bd45c5a" />
+    <TriggeredPowerHistoryInfo effectIndex="0" showInHistory="False" />
   </Entity>
   <Entity version="2" CardID="BRM_029">
     <MasterPower>b73f789f-49d4-4ce7-9575-7dac07d943c5</MasterPower>
