@@ -1,3 +1,8 @@
+## 1.1.0-2.5.0.8416 (content update)
+- Update for Hearthstone 2.5.0.8416 content.  Contains minor changes for content
+  and removes 2 non-primary cards.
+
+
 ## 1.1.0-2.4.0.8311 (content update)
 - Update for Heartstone 2.4.0.8311 content.  Contains new cards for Blackrock
   Mountain Adventure.
