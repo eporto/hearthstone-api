@@ -184,8 +184,8 @@ function doit(language, callback) {
                 /* New enumIDs found in Hearthstone-2.x */
 
                 nameMapper['377'] = 'unknown377';  /* Found on Flame Leviathan and Burrowing Mine  1 - probably a Bool */
-                nameMapper['389'] = 'unknown389';  /* Found on Dunemaul Shaman                     1 - probably a Bool */
                 nameMapper['380'] = 'unknown380';  /* added in 2.4.0.8311               values range from 2314 to 2592 */
+                nameMapper['389'] = 'unknown389';  /* Found on Dunemaul Shaman                     1 - probably a Bool */
                 nameMapper['401'] = 'unknown401';  /* added in 2.4.0.8311                          1 - probably a Bool */
                 nameMapper['402'] = 'unknown402';  /* added in 2.4.0.8311                          1 - probabyy a Bool */
 
